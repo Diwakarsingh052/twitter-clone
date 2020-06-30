@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"github.com/99designs/gqlgen/graphql/handler"
 	"github.com/joho/godotenv"
 	"log"
@@ -21,8 +20,8 @@ func main() {
 	if err != nil {
 		log.Fatalf("Error loading .env file")
 	}
-	fmt.Println(os.Getenv("NAME"))
-	us, err := model.NewUserService(os.Getenv("NAME")+":"+os.Getenv("PASSWORD")+"@/"+os.Getenv("DATABASE")+"?charset=utf8&parseTime=True&loc=Local")
+
+	us, err := model.NewUserService(os.Getenv("NAME") + ":" + os.Getenv("PASSWORD") + "@/" + os.Getenv("DATABASE") + "?charset=utf8&parseTime=True&loc=Local")
 	must(err)
 	defer us.Close()
 	us.AutoMigrate()
@@ -44,8 +43,6 @@ func main() {
 	http.HandleFunc("/signup", usersC.Create)
 
 	http.HandleFunc("/login", usersC.Login)
-
-
 
 	log.Fatal(http.ListenAndServe(":"+port, nil))
 }

@@ -41,4 +41,3 @@ type User struct {
 type UserToken struct {
 	Token string
 }
-

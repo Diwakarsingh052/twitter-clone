@@ -1,11 +1,10 @@
-
 package hash
 
 import (
-"crypto/hmac"
-"crypto/sha256"
-"encoding/base64"
-"hash"
+	"crypto/hmac"
+	"crypto/sha256"
+	"encoding/base64"
+	"hash"
 )
 
 // NewHMAC creates and returns a new HMAC object
@@ -28,7 +27,6 @@ func (h HMAC) Hash(input string) string {
 	h.hmac.Reset()
 	h.hmac.Write([]byte(input))
 	b := h.hmac.Sum(nil)
-	encodedString:=base64.URLEncoding.EncodeToString(b)
+	encodedString := base64.URLEncoding.EncodeToString(b)
 	return encodedString
 }
-
