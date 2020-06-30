@@ -1,1 +1,1 @@
-# twitter-clone
+# twitter-clone using GraphQl and Go
