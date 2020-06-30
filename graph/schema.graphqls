@@ -1,0 +1,42 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+scalar Time
+type User{
+    email: String!
+}
+
+
+type Post {
+    email: String!
+    text: String!
+    time: Time!
+}
+type Follow{
+    MyEmail:String!
+    followedEmail : String!
+}
+type FollowedUser{
+    email : String!
+}
+
+type Query {
+    allUsers: [User!]
+    myPost:[Post]
+    followedPost:[Post]
+    followedUser:[FollowedUser]
+
+}
+
+input NewPost{
+    text: String!
+}
+input FollowUser{
+    Email : String!
+}
+
+
+type Mutation {
+    createPost(input: NewPost!): Post!
+    followUser(input:FollowUser!):Follow!
+}
