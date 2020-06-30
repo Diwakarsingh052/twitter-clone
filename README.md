@@ -12,10 +12,14 @@ To generate a token vistit /signup to create new user. This will generate a toke
 If account already exist then use /login endpoint.
 
 Request to login or signup can be made using postman by sending the given below sample request as json body.
+
 {   
-        "email": "diwakarsingh@gmail.com",
-        "password":"dev"
-    }
+        
+	"email": "diwakarsingh@gmail.com",
+	
+    "password":"dev"
+ 
+ }
  
 # After authentication no need to pass the token from header. It is done automatically.
 
