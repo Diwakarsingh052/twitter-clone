@@ -2,7 +2,6 @@ package model
 
 import (
 	"errors"
-	"fmt"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"golang.org/x/crypto/bcrypt"
@@ -122,7 +121,7 @@ func (us *UserService) Create(user *User) error {
 
 	var has = us.hmac.Hash(*user.Remember)
 	user.RememberHash = &has
-	fmt.Println(*user.Remember)
+
 	return us.DB.Create(user).Error
 }
 
