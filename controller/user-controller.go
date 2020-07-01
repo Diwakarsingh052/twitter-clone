@@ -66,7 +66,7 @@ func (u *Users) Create(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	http.Redirect(w, r, "/cookietest", http.StatusFound)
+	
 }
 
 // Login is used to verify the provided email address and
