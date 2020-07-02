@@ -71,10 +71,11 @@ func (r *mutationResolver) FollowUser(ctx context.Context, input model.FollowUse
 func (r *queryResolver) AllUsers(ctx context.Context) ([]*model.User, error) {
 	var user []model.User
 	err := r.Db.Find(&user).Error
-
+	fmt.Println(user)
 	var users = make([]*model.User, len(user))
-	for i, v := range user {
-		users[i] = &v
+
+	for i := 0; i < len(user); i++ {
+		users[i] = &user[i]
 	}
 	if err != nil {
 
@@ -91,7 +92,7 @@ func (r *queryResolver) MyPost(ctx context.Context) ([]*model.Post, error) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	err = r.Db.Order("time asc").Where("email = ?", user.Email).Find(&post).Error
+	err = r.Db.Order("time desc").Where("email = ?", user.Email).Find(&post).Error
 
 	var posts = make([]*model.Post, len(post))
 	for i := 0; i < len(post); i++ {
