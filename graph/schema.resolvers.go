@@ -124,14 +124,15 @@ func (r *queryResolver) FollowedPost(ctx context.Context) ([]*model.Post, error)
 	}
 
 	var posts []model.Post
-	for _, u := range follow {
-		err = r.Db.Order("time asc").Where("email = ?", u.FollowedEmail).Find(&post).Error
+	for i := 0; i < len(follow); i++ {
+		err = r.Db.Order("time asc").Where("email = ?", follow[i].FollowedEmail).Find(&post).Error
 		if err != nil {
 			return nil, err
 		}
 		posts = append(posts, post...)
-
+		fmt.Println(post)
 	}
+
 
 	Sort(posts)
 
