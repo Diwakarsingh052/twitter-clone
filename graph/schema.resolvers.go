@@ -133,7 +133,6 @@ func (r *queryResolver) FollowedPost(ctx context.Context) ([]*model.Post, error)
 		fmt.Println(post)
 	}
 
-
 	Sort(posts)
 
 	var finalPosts = make([]*model.Post, len(posts))

@@ -2,10 +2,11 @@ package model
 
 import (
 	"errors"
+	"os"
+
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"golang.org/x/crypto/bcrypt"
-	"os"
 
 	"twitter-clone/hash"
 	"twitter-clone/rand"
@@ -88,6 +89,7 @@ func (us *UserService) Authenticate(email, password string) (*User, error) {
 
 	return foundUser, nil
 }
+
 func first(db *gorm.DB, dst interface{}) error {
 	err := db.First(dst).Error
 	if err == gorm.ErrRecordNotFound {
@@ -95,6 +97,7 @@ func first(db *gorm.DB, dst interface{}) error {
 	}
 	return err
 }
+
 func (us *UserService) Create(user *User) error {
 	pwBytes := []byte(user.Password + userPwPepper)
 
@@ -135,6 +138,7 @@ func (us *UserService) AutoMigrate() error {
 	}
 	return nil
 }
+
 func (us *UserService) Update(user *User) error {
 	if *user.Remember != "" {
 		var rem = us.hmac.Hash(*user.Remember)
@@ -144,6 +148,7 @@ func (us *UserService) Update(user *User) error {
 	return us.DB.Model(user).Update("remember_hash", user.RememberHash).Error
 
 }
+
 func (us *UserService) SetToken(token string) *UserToken {
 	return &UserToken{Token: token}
 }

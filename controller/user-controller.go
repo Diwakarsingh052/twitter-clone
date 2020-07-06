@@ -7,8 +7,7 @@ import (
 	"net/http"
 	"twitter-clone/graph/model"
 	"twitter-clone/rand"
-)
-
+) 
 
 func NewUsers(us *model.UserService) *Users {
 	return &Users{
@@ -27,7 +26,6 @@ type jsonData struct {
 func (u *Users) SayHello(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "Hello  How are you")
 }
-
 
 func (u *Users) Create(w http.ResponseWriter, r *http.Request) {
 	var u1 jsonData
@@ -55,7 +53,7 @@ func (u *Users) Create(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	
+
 }
 
 // Login is used to verify the provided email address and

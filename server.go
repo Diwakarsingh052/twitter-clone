@@ -1,16 +1,17 @@
 package main
 
 import (
-	"github.com/99designs/gqlgen/graphql/handler"
-	"github.com/joho/godotenv"
 	"log"
 	"net/http"
 	"os"
 	"twitter-clone/controller"
 	"twitter-clone/graph"
 	"twitter-clone/graph/generated"
-	"twitter-clone/graph/model"
+	"twitter-clone/graph/model" 
 	"twitter-clone/middleware"
+
+	"github.com/99designs/gqlgen/graphql/handler"
+	"github.com/joho/godotenv"
 )
 
 func main() {
