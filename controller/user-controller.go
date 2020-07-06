@@ -9,10 +9,7 @@ import (
 	"twitter-clone/rand"
 )
 
-// NewUsers is used to create a new Users controller.
-// This function will panic if the templates are not
-// parsed correctly, and should only be used during
-// initial setup.
+
 func NewUsers(us *model.UserService) *Users {
 	return &Users{
 		us: us,
@@ -31,15 +28,7 @@ func (u *Users) SayHello(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "Hello  How are you")
 }
 
-// New is used to render the form where a user can
-// create a new user account.
-//
-// GET /signup
 
-// Create is used to process the signup form when a user
-// submits it. This is used to create a new user account.
-//
-// POST /signup
 func (u *Users) Create(w http.ResponseWriter, r *http.Request) {
 	var u1 jsonData
 	b, err := ioutil.ReadAll(r.Body)
